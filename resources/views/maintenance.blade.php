@@ -9,6 +9,7 @@
         'nomClient' => 'Nom',
         'created_at' => 'Date',
     ];
+    $has_bill = true;
 @endphp
 
 @extends('layouts.layout')
@@ -18,7 +19,8 @@
 @section('content')
 
 @section('content')
-    <body  >
+
+    <body>
         <main class="container-fluid">
             <div class="my-3 row">
                 <h3 class="col-4 col-lg-2 text-warning">Entretien :</h3>
@@ -78,7 +80,8 @@
                         <p class="h3 text-white">Data</p>
                     </div>
                     <div class="col">
-                        <p class="fs-3 text-white"> Cost: <span id="service-cost" class="numeric-value fw-bold">0</span> Ar</p>
+                        <p class="fs-3 text-white"> Cost: <span id="service-cost" class="numeric-value fw-bold">0</span> Ar
+                        </p>
                     </div>
                     <div class="col-2 d-flex justify-content-end align-items-start">
                         <input type="submit" value="Save" class="btn btn-lg btn-primary">
@@ -86,8 +89,18 @@
                 </div>
 
             </form>
-
-            <h3 class="mt-5 text-warning">List :</h3>
+            <div class="d-flex justify-content-between mt-5 me-5">
+                <h3 class="text-warning">List :</h3>
+                <form action="{{ route("filterMaintenances") }}" method="post" class="btn-group">
+                    @csrf
+                    <input type="button" value="from" class="form-control btn">
+                    <input type="date" name="begin" class="form-control">
+                    <input type="button" value="to" class="form-control btn">
+                    <input type="date" name="end" class="form-control">
+                    <input type="submit" value="Filter" class="btn btn-secondary">
+                </form>
+            </div>
+            
 
             <div class="container">
                 @if (isset($entretien))

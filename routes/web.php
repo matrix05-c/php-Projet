@@ -84,6 +84,12 @@ Route::post('/editMaintenance', [controllerentretien::class, 'editEntretien'])
 
 Route::post('searchEntretien', [controllerentretien::class, 'search'])->name('serachEntretien');
 
+Route::post('haha/haha', [controllerentretien::class, 'filterMaintenancesClientList'])
+->name('filterMaintenances');
+
+Route::get('/bill/maintenances/{numEntretien}', [controllerentretien::class, 'generateBill'])
+    ->name('billMaintenances');
+
 
 
 Route::get('/list/Entree', [controllerentree::class, 'showentre_produit'])

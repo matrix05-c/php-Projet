@@ -8,6 +8,7 @@
         'stock' => 'Stock',
         'prixProduit' => 'Prix'
     ];
+    $has_bill = false;
 @endphp
 
 @extends('layouts.layout')

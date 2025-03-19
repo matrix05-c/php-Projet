@@ -7,6 +7,7 @@ use App\Models\Service;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class controllerentretien
 {
@@ -120,4 +121,60 @@ class controllerentretien
         }
         return view('maintenance', compact('service', 'entretien'));
     }
+
+    public function filterMaintenancesClientList(Request $request)
+    {
+        $request->validate([
+            "begin" => "date|required",
+            "end" => "date|required"
+        ]);
+
+        $service = Service::select('numServ', 'service', 'prix')
+            ->get();
+
+        $entretien = Entretien::select('numEntr', 'numServ', 'numVoiture', 'nomClient', 'created_at')
+            ->whereBetween('created_at', [$request->begin, $request->end])
+            ->get();
+
+        $productINferieurDix = Produit::where('stock', '<', 10)
+            ->select('design')->get();
+
+        return view('maintenance', compact('service', 'entretien', 'productINferieurDix'));
+    }
+
+    public function generateBill($numEntretien)
+    {  
+    
+        $date = Entretien::find($numEntretien)
+            ->created_at;
+        $nomClient = Entretien::find($numEntretien)->nomClient;
+           // dd($nomClient);
+        $maintenances = Entretien::with('services')
+            ->where('nomClient', $nomClient)
+            ->whereDate('created_at', $date)
+            ->get();
+
+        $first = $maintenances->first();
+        $numVoiture = $first->numVoiture ?? null;
+        $total = $maintenances->sum(function($maintenance) {
+            return $maintenance->services->prix;
+        });
+
+        $data["nomClient"] = $nomClient;
+        $data["numVoiture"] = $numVoiture;
+        $data["maintenances"] = $maintenances;
+        $data["date"] = $date->format('Y-m-d');
+        $data["total"] = $total;
+
+        $pdf = Pdf::loadView('bill', $data)
+            ->setPaper('a4', 'portrait')
+            ->setOptions([
+                'isHtml5ParserEnabled' => true,
+                'isRemoteEnabled' => true,
+                'defaultFont' => 'sans-serif'
+            ]);
+
+        return $pdf->download("facture-{$nomClient}-{$date->format('Y-m-d')}.pdf");
+    }
+
 }

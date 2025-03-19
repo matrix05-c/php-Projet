@@ -2,6 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
+    
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +13,7 @@
     <script src="{{ asset('node_modules/fastbootstrap/node_modules/bootstrap/dist/js/bootstrap.bundle.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('node_modules/fastbootstrap/dist/css/fastbootstrap.css') }}">
 
-    <script src="{{ asset('node_modules/highcharts/highcharts.js') }}"></script>
-
     <link rel="stylesheet" href="{{ asset('Css/style.css') }}">
-    <script src="{{ asset('Js/script.js') }}"></script>
 
 </head>
 

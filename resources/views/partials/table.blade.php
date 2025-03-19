@@ -41,6 +41,13 @@
                             <button class="btn btn-outline-danger">Delete</button>
                         </a>
                     </td>
+                    @if ($has_bill)
+                    <td class="col-1">
+                        <a href="{{ url('bill/' . Request::segment(2) . '/' . $data[$PK])}}">
+                            <button class="btn btn-outline-secondary">Bill</button>
+                        </a>
+                    </td>
+                    @endif
                 </tr>
             @endforeach
         @endif
