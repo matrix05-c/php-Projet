@@ -155,4 +155,24 @@ class controllerentretien
 
         return $pdf->download("facture-{$nomClient}-{$date->format('Y-m-d')}.pdf");
     }
+
+    public function filterMaintenancesClientList(Request $request)
+    {
+        $request->validate([
+            "begin" => "date|required",
+            "end" => "date|required"
+        ]);
+
+        $service = Service::select('numServ', 'service', 'prix')
+            ->get();
+
+        $entretien = Entretien::select('numEntr', 'numServ', 'numVoiture', 'nomClient', 'created_at')
+            ->whereBetween('created_at', [$request->begin, $request->end])
+            ->get();
+
+        $productINferieurDix = Produit::where('stock', '<', 10)
+            ->select('design')->get();
+
+        return view('maintenance', compact('service', 'entretien', 'productINferieurDix'));
+    }
 }

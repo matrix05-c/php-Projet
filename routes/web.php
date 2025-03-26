@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\controllerAchat;
 use App\Http\Controllers\controllerentretien;
 use App\Http\Controllers\controllerIndex;
@@ -82,10 +83,17 @@ Route::get('modifie/maintenances/{numEntree}', [controllerentretien::class, 'loa
 Route::post('/editMaintenance', [controllerentretien::class, 'editEntretien'])
     ->name('modifieEntretien');
 
-Route::post('searchEntretien', [controllerentretien::class, 'search'])->name('serachEntretien');
+Route::post('searchEntretien', [controllerentretien::class, 'search'])
+    ->name('serachEntretien');
 
 Route::get('/bill/maintenances/{numEntretien}', [controllerentretien::class, 'generateBill'])
-    ->name("factureEntretien");
+    ->name('billMaintenances');
+
+Route::post('/list/maintenances/filter', [controllerentretien::class, 'filterMaintenancesClientList'])
+    ->name('filterMaintenances');
+
+Route::get('/list/maintenances/filter', [controllerentretien::class, 'showEntretienList_nomService']);
+
 
 Route::get('/list/Entree', [controllerentree::class, 'showentre_produit'])
     ->name('Entree');
@@ -99,5 +107,3 @@ Route::get('modifie/Entree/{numEntre}', [controllerentree::class, 'loadeditEntre
 
 Route::post('modifieEntree', [controllerentree::class, 'editEntree'])
     ->name('editEntree');
-
-

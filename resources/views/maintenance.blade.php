@@ -88,7 +88,17 @@
 
             </form>
 
-            <h3 class="mt-5 text-warning">List :</h3>
+            <div class="d-flex justify-content-between">
+                <h3 class="text-warning">List :</h3>
+                <form action="{{ route("filterMaintenances") }}" method="post" class="btn-group">
+                    @csrf
+                    <input type="button" value="from" class="form-control btn">
+                    <input type="date" name="begin" class="form-control">
+                    <input type="button" value="to" class="form-control btn">
+                    <input type="date" name="end" class="form-control">
+                    <input type="submit" value="Filter" class="btn btn-secondary">
+                </form>
+            </div>
 
             <div class="container">
                 @if (isset($entretien))

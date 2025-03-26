@@ -49,18 +49,18 @@
                     <li class="nav-item"><a @class(['nav-link', 'active' => $page == 'purchase']) aria-current="page"
                             href="{{ route('purchase') }}">Achat</a></li>
                     <li class="nav-item"><a @class(['nav-link', 'active' => $page == 'maintenance']) aria-current="page"
-                            href="{{ Route('maintenance')}}">Entretien</a></li>
+                            href="{{ route('maintenance')}}">Entretien</a></li>
 
                     <li class="nav-item dropdown">
                         <a @class(['nav-link', 'dropdown-toggle', 'active' => $page == 'list']) href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
                         <ul class="dropdown-menu">
                             <li><a @class(['dropdown-item', 'active' => $list == 'products'])
-                                    href="{{ Route('list_products') }}">Products</a></li>
+                                    href="{{ route('list_products') }}">Products</a></li>
                             <li><a @class(['dropdown-item', 'active' => $list == 'services'])
-                                    href="{{ Route('list_services') }}">Services</a></li>
+                                    href="{{ route('list_services') }}">Services</a></li>
                             <li><a @class(['dropdown-item', 'active' => $list == 'maintenances'])
-                                    href="{{ Route('Entree') }}">Entree</a></li>
+                                    href="{{ route('Entree') }}">Entree</a></li>
                         </ul>
 
                     </li>
