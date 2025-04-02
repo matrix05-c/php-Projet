@@ -4,7 +4,7 @@
     $list = '';
     $translate = [
         'numAchat' => 'N',
-        'numProd' => 'N product',
+        'design' => 'Product',
         'nomClient' => 'Name',
         'nbrLitre' => 'Quantity',
         'created_at' => 'Date',

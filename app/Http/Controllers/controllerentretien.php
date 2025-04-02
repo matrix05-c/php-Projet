@@ -15,13 +15,9 @@ class controllerentretien
     {
         $service = Service::select('numServ', 'service', 'prix')
             ->get();
-        $entretien = Entretien::select(
-            'numEntr',
-            'numServ',
-            'numVoiture',
-            'nomClient',
-            'created_at'
-        )->get();
+        $entretien = Entretien::join('services', 'services.numServ', '=', 'entretiens.numServ')
+            ->select('numEntr', 'service', 'numVoiture', 'nomClient', 'created_at')
+            ->get();
 
         $productINferieurDix = Produit::where('stock', '<', 10)
             ->select('design')->get();

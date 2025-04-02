@@ -11,8 +11,10 @@ class controllerAchat
     {
         $produit = Produit::select('numProd', 'design', 'stock', 'prixProduit')
             ->get();
-        $achat = Achat::select('numAchat', 'numProd', 'nomClient', 'nbrLitre', 'created_at')
+        $achat = Achat::join('produits', 'produits.numProd', '=', 'achats.numProd')
+            ->select('numAchat', 'design', 'nomClient', 'nbrLitre', 'created_at')
             ->get();
+
 
         $productINferieurDix = Produit::where('stock', '<', 10)
             ->select('design')->get();

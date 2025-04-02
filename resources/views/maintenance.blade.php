@@ -4,7 +4,7 @@
     $list = '';
     $translate = [
         'numEntr' => 'N',
-        'numServ' => 'N service',
+        'service' => 'Service',
         'numVoiture' => 'N vehicule',
         'nomClient' => 'Nom',
         'created_at' => 'Date',
