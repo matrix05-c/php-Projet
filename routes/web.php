@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\controllerAchat;
 use App\Http\Controllers\controllerentretien;
 use App\Http\Controllers\controllerIndex;
@@ -17,7 +16,6 @@ Route::get('/', function () {
 
 Route::get('/index', [controllerIndex::class, 'showIndex'])
     ->name('index');
-
 
 
 Route::get('list/purchase', [controllerAchat::class, 'showAchat_produit'])
@@ -52,8 +50,6 @@ Route::post('delete/produitt', [controllerProduct::class, 'editProduit'])
     ->name('modifieProduit');
 
 
-
-
 Route::get('/list/services', [controllerService::class, 'showServices'])
     ->name('list_services');
 
@@ -66,8 +62,6 @@ Route::get('modifie/services/{numServ}', [controllerService::class, 'loadEditSer
 
 Route::post('EditService', [controllerService::class, 'editService'])
     ->name('modifieService');
-
-
 
 
 Route::get('/list/maintenances', [controllerentretien::class, 'showEntretienList_nomService'])
@@ -83,8 +77,14 @@ Route::get('modifie/maintenances/{numEntree}', [controllerentretien::class, 'loa
 Route::post('/editMaintenance', [controllerentretien::class, 'editEntretien'])
     ->name('modifieEntretien');
 
+
 Route::post('searchEntretien', [controllerentretien::class, 'search'])
     ->name('serachEntretien');
+
+Route::post('searchEntretien', [controllerentretien::class, 'search'])->name('serachEntretien');
+
+Route::post('haha/haha', [controllerentretien::class, 'filterMaintenancesClientList'])
+    ->name('filterMaintenances');
 
 Route::get('/bill/maintenances/{numEntretien}', [controllerentretien::class, 'generateBill'])
     ->name('billMaintenances');

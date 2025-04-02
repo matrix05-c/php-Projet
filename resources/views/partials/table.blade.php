@@ -5,6 +5,7 @@
             $data_list[] = $data->toArray();
         }
     }
+
     $has_bill = isset($has_bill)? $has_bill: false;
 @endphp
 

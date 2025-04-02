@@ -12,7 +12,7 @@ Highcharts.setOptions({
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const chart = Highcharts.chart("income-graph", {
+    Highcharts.chart("income-graph", {
         chart: {
             type: "column",
         },

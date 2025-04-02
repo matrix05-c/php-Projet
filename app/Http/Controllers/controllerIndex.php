@@ -1,14 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Achat;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Entretien;
 use App\Models\Produit;
-      
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+
 
 class controllerIndex
 {
@@ -59,11 +58,11 @@ class controllerIndex
             ->get();
 
         $recetteParMois = [];
-        foreach($recetteAchatParMois as $recette) {
+        foreach ($recetteAchatParMois as $recette) {
             $recetteParMois[$recette["month"]] = $recette["recetteProduit"];
         }
-        foreach($recetteEntretienParMois as $mois => $recette) {
-            $recetteDuMois = $recetteParMois[$recette["month"]] ?? 0; 
+        foreach ($recetteEntretienParMois as $mois => $recette) {
+            $recetteDuMois = $recetteParMois[$recette["month"]] ?? 0;
             $recetteParMois[$recette["month"]] = $recetteDuMois + $recette["recetteService"];
         }
 
@@ -71,11 +70,24 @@ class controllerIndex
         $productINferieurDix = Produit::where('stock', '<', 11)
             ->select('design')->get();
 
+        $top5Client = DB::table('achats')->select('nomClient', DB::raw('count(*) as totalInteraction'))
+            ->groupBy('nomClient')
+
+                ->union(
+                    DB::table('entretiens')->select('nomClient', DB::raw('count(*) as totalInteraction'))
+            ->groupBy('nomClient')
+                       )
+
+                ->groupBy('nomClient')
+                ->orderByDesc('totalInteraction')
+                ->limit(5)
+                ->get();
+            $top5Clients = collect($top5Client);
+
         // Envoye des données
         return view('index', compact(
             'products',
-            'meilleurClientAchat',
-            'meilleurClientEntretien',
+            'top5Clients',
             'recetteTotal',
             'recetteParMois',
             'productINferieurDix'

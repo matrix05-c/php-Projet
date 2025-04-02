@@ -9,6 +9,8 @@
         'nbrLitre' => 'Quantity',
         'created_at' => 'Date',
     ];
+
+    $has_bill = false;
 @endphp
 
 @extends('layouts.layout')
@@ -16,7 +18,6 @@
 @section('title', 'Purchase')
 
 @section('content')
-
     <body>
         <main class="container-fluid">
             <div class="my-3 row">

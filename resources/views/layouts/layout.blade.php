@@ -2,7 +2,6 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,15 +12,16 @@
     <link rel="stylesheet" href="{{ asset('node_modules/fastbootstrap/dist/css/fastbootstrap.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
 </head>
 
 <body>
     @if (isset($productINferieurDix) && ($productINferieurDix->count() > 0))
         <div role="alert" aria-live="assertive" aria-atomic="true"
-            class="toast show bg-danger text-light m-5 top-0 end-0 position-fixed" style="z-index: 10000">
+            class="toast show bg-danger text-light top-0 end-0 position-fixed" style="z-index: 10000">
             <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
                 <strong class="me-auto">Alert</strong>
+                <small>1 mins ago</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
@@ -50,7 +50,6 @@
                             href="{{ route('purchase') }}">Achat</a></li>
                     <li class="nav-item"><a @class(['nav-link', 'active' => $page == 'maintenance']) aria-current="page"
                             href="{{ route('maintenance')}}">Entretien</a></li>
-
                     <li class="nav-item dropdown">
                         <a @class(['nav-link', 'dropdown-toggle', 'active' => $page == 'list']) href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
@@ -73,5 +72,4 @@
     @yield('content')
 
 </body>
-
 </html>

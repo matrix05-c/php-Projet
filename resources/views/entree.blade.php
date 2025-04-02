@@ -8,6 +8,8 @@
         'numProd' => 'N produit',
         'created_at' => 'Date',
     ]; 
+
+    $has_bill = false;
 @endphp
 
 @extends('layouts.layout')

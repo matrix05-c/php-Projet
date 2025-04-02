@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +14,6 @@ class Entretien extends Model
     ];
     
     protected $primaryKey = 'numEntr';
-
 
     public function services()
     {

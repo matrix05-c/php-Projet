@@ -7,9 +7,7 @@
 @extends('layouts.layout')
 @section('title', 'Modifie Produit')
 @section('content')
-
-    <body  >
-        
+    <body>
         <div class="card w-50 mx-auto" style="margin-top: 8%; border-radius: 5%;">
             <div class="modal-header p-5 pb-4 border-bottom-0">
                 <h1 class="fw-bold mb-0 fs-2">Modifie services</h1>
@@ -34,7 +32,4 @@
 
         </div>
     </body>
-
-
-
 @endsection

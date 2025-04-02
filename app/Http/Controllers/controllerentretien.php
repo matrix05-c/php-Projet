@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Entretien;
 use App\Models\Service;
-
-use Exception;
 use Illuminate\Http\Request;
 use App\Models\Produit;
 use Carbon\Carbon;
+use Exception;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -18,7 +15,6 @@ class controllerentretien
     {
         $service = Service::select('numServ', 'service', 'prix')
             ->get();
-
         $entretien = Entretien::select(
             'numEntr',
             'numServ',
@@ -85,6 +81,7 @@ class controllerentretien
                 'numVoiture' => $request->vehNum,
                 'nomClient' => $request->name
             ]);
+            
             return redirect('list/maintenances')
                 ->with('success', 'Entretien modifi with succes');
         } catch (Exception $e) {
@@ -92,12 +89,12 @@ class controllerentretien
                 ->with('error', $e->getMessage());
         }
     }
+
     public function search(Request $request)
     {
         if ($request->search == "") {
             $service = Service::select('numServ', 'service', 'prix')
                 ->get();
-
             $entretien = Entretien::select(
                 'numEntr',
                 'numServ',
@@ -106,10 +103,8 @@ class controllerentretien
                 'created_at'
             )->get();
         } else {
-
             $service = Service::select('numServ', 'service', 'prix')
                 ->get();
-
             $entretien = Entretien::where('nomClient', 'LIKE', '%' . $request->search . '%')
                 ->select(
                     'numEntr',
@@ -119,6 +114,7 @@ class controllerentretien
                     'created_at'
                 )->get();
         }
+        
         return view('maintenance', compact('service', 'entretien'));
     }
 

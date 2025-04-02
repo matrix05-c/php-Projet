@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Models\Produit;
 use App\Models\Achat;
@@ -73,19 +72,19 @@ class controllerAchat
 
 
     public function editAchat(Request $request)
-    {  //dd($request->all());
-
+    {
         $request->validate([
             "quantit" => "required|min:1|integer",
             "produc" => "required",
             "name" => "required"
         ]);
         $produite = Produit::find($request->produc);
-        $ProduitAchete = Achat::where('numAchat', $request->numAchat)->select('nbrLitre')->get();
+        $ProduitAchete = Achat::where('numAchat', $request->numAchat)
+            ->select('nbrLitre')
+            ->get();
         $produitAcheteValue = $ProduitAchete[0]['nbrLitre'];
 
         if (($produite->stock + $produitAcheteValue) >= $request->quantit) {
-
             $produite->stock = ($produite->stock + $produitAcheteValue) - $request->quantit;
             $produite->save();
 
@@ -100,19 +99,17 @@ class controllerAchat
             return redirect('list/purchase')->with('error', 'failed to modifie: quamtity product insuffisant');
         }
     }
+
     public function search(Request $request)
     {
         if ($request->search == "") {
             $produit = Produit::select('numProd', 'design', 'stock', 'prixProduit')->get();
-            $achat = Achat::select('numAchat', 'numProd', 'nomClient', 'nbrLitre', 'created_at')
-                ->get();
-
+            $achat = Achat::select('numAchat', 'numProd', 'nomClient', 'nbrLitre', 'created_at')->get();
         } else {
-
             $produit = Produit::select('numProd', 'design', 'stock', 'prixProduit')->get();
             $achat = Achat::where('nomclient', 'LIKE', '%' . $request->search . '%')
-                ->select('numAchat', 'numProd', 'nomClient', 'nbrLitre', 'created_at')->get();
-
+                ->select('numAchat', 'numProd', 'nomClient', 'nbrLitre', 'created_at')
+                ->get();
         }
         return view('purchase', compact('produit', 'achat'));
     }

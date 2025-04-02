@@ -2,7 +2,6 @@
     $PK = 'numEntr';
     $page = '';
     $list = '';
-
 @endphp
 
 @extends('layouts.layout')
@@ -10,8 +9,7 @@
 @section('title', 'Modifie_entretien')
 
 @section('content')
-    <body  >
-
+    <body>
 
         <main class="container-fluid">
 

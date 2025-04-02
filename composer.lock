@@ -8442,12 +8442,20 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
+<<<<<<< HEAD
     "stability-flags": [],
+=======
+    "stability-flags": {},
+>>>>>>> d2870968e8fbfb35c318537688caadd6f02f6f4b
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
+<<<<<<< HEAD
     "platform-dev": [],
+=======
+    "platform-dev": {},
+>>>>>>> d2870968e8fbfb35c318537688caadd6f02f6f4b
     "plugin-api-version": "2.6.0"
 }

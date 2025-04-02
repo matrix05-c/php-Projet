@@ -1,8 +1,12 @@
 @font-face {
-    font-family: 'Teko';
-    src: url('DS-DIGI.TTF') format('truetype');
+    font-family: "DIGITAL";
+    src: url("../resource/font/DS/DS-DIGI.TTF") format("truetype");
 }
 
 .numeric-value {
-    font-family: 'Teko', serif;
+    font-family: "DIGITAL", serif;
+}
+
+#caddy {
+    color: red;
 }

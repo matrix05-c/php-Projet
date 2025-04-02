@@ -7,6 +7,8 @@
         'service' => 'Service',
         'prix' => 'Cost'
     ];
+
+    $has_bill = false;
 @endphp
 
 @extends('layouts.layout')

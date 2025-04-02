@@ -33,14 +33,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="card-text">
-
-                                <h3>Income :</h3>
+                                <h3 class="text text-warning">Income :</h3>
                                 <p class="text-center h3"><span class="numeric-value">{{ $recetteTotal }}
                                     </span> Ar</p>
-
-                                <h3>Client:</h3>
-                                <p class="numeric-value text-center h3">0</p>
-
                             </div>
                         </div>
                     </div>
@@ -51,6 +46,31 @@
                 </div>
 
             </div>
+
+            <h3 class="text text-warning">Liste des client le plus participatif: </3>
+                <div class="container">
+                    @if (isset($top5Clients))
+                        <table class="table table-striped-columns mt-5">
+                            <thead>
+                                <tr>
+                                    <th>N</th>
+                                    <th>Nombre d'interaction</th>
+                                    <th>Nom</th>
+                                </tr>
+                            </thead>
+                            @foreach ($top5Clients as $top)
+
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $top->totalInteraction }}</td>
+                                    <td>{{ $top->nomClient }}</td>
+                                </tr>
+
+                            @endforeach
+                        </table>
+
+                    @endif
+                </div>
 
         </main>
     </body>
