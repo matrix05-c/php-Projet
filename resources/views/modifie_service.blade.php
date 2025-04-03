@@ -13,7 +13,7 @@
                 <h1 class="fw-bold mb-0 fs-2">Modifie services</h1>
             </div>
             <div class="modal-body p-5 pt-0">
-                <form action="{{ route('modifieService') }}" method="post">
+                <form action="{{ route('editService') }}" method="post">
                     @csrf
                     <div class="mb-3 form-floating">
                         <input type="hidden" name="numero_service" value="{{ $services->numServ }}">

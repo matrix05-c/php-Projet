@@ -17,10 +17,10 @@ class controllerService
             $new_service->prix = $request->service_price;
             $new_service->save();
 
-            return redirect('/list/services')
+            return redirect(route('listServices'))
                 ->with('success', 'add services successfully');
         } else {
-            return redirect('/list/services')
+            return redirect(route('service'))
                 ->with('fail', 'error: ');
         }
     }
@@ -53,6 +53,6 @@ class controllerService
             'service' => $request->sevice_name,
             'prix' => $request->price_value,
         ]);
-        return redirect('/list/services')->with('success', 'service update successfully');
+        return redirect(route('listServices'))->with('success', 'service update successfully');
     }
 }

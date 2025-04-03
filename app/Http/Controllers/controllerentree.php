@@ -13,7 +13,8 @@ class controllerentree
     {
         $produit = Produit::select('numProd', 'design')
             ->get();
-        $entre = Entree::select('numEntree', 'stockEntree', 'numProd', 'created_at')
+        $entre = Entree::join('produits', 'produits.numProd', '=', 'entrees.numProd')
+            ->select('numEntree', 'stockEntree', 'design', 'created_at')
             ->get();
         $productINferieurDix = Produit::where('stock', '<', 10)
             ->select('design')->get();
@@ -30,14 +31,14 @@ class controllerentree
         $new_entree->stockEntree = $request->quantity;
         $new_entree->numProd = $request->product;
         $new_entree->save();
-        return redirect()->back()->with('success', 'Entree ajoute avec succes');
+        return redirect()->back()->with('success', 'Entry added successfuly');
     }
 
     public function deleteEntree($numEntree)
     {
         try {
             Entree::find($numEntree)->delete();
-            return redirect()->back()->with('success', 'delete entree successfuly');
+            return redirect()->back()->with('success', 'Entry deleted successfuly');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -67,9 +68,9 @@ class controllerentree
             $produite->stock += $entree->stockEntree;
             $produite->save();
             $entree->save();
-            return redirect('/list/Entree')->with('success', 'Entree modifie with successfuly');
+            return redirect(route('entry'))->with('success', 'Entry modified successfuly');
         } else {
-            return redirect('/list/Entree')->with('error', 'you can\'t modifie anymore');
+            return redirect(route('entry'))->with('error', 'You can\'t modifie anymore');
         }
     }
 }

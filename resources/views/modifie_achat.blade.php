@@ -8,10 +8,10 @@
 
 @section('content')
 
-    <body  >
+    <body>
         <main class="container-fluid">
             <h3 class="mt-5 text-warning">Modifier Achat :</h3>
-            <form action="{{ route('modifieAchat') }}" method="post" class="container">
+            <form action="{{ route('editPurchase') }}" method="post" class="container">
                 @csrf
                 <div class="card card-body">
                     <div class="row my-2">

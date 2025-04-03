@@ -8,102 +8,97 @@ use App\Http\Controllers\controllerentree;
 use Illuminate\Support\Facades\Route;
 use App\Models\Produit;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::redirect('/', 'index');
 
 
-
-Route::get('/index', [controllerIndex::class, 'showIndex'])
+Route::get('index', [controllerIndex::class, 'showIndex'])
     ->name('index');
 
 
+// Purchase
 Route::get('list/purchase', [controllerAchat::class, 'showAchat_produit'])
     ->name('purchase');
 
 Route::post('list/purchase', [controllerAchat::class, 'addAchat'])
-    ->name('addAchat');
+    ->name('addPurchase');
 
 Route::get('delete/purchase/{numAchat}', [controllerAchat::class, 'deleteAchat']);
 
-Route::get('modifie/purchase/{numAchat}', [controllerAchat::class, 'loadEditAchat']);
+Route::get('edit/purchase/{numAchat}', [controllerAchat::class, 'loadEditAchat']);
 
-Route::post('edit-purchase', [controllerAchat::class, 'editAchat'])
-    ->name('modifieAchat');
+Route::post('edit/purchase', [controllerAchat::class, 'editAchat'])
+    ->name('editPurchase');
 
-Route::post('list/purcha', [controllerAchat::class, 'search'])
-    ->name('searchAchat');
+Route::post('search/purchase', [controllerAchat::class, 'search'])
+    ->name('searchPurchases');
 
 
-
-Route::get('/list/products', [controllerProduct::class, 'showProduit'])
-    ->name('list_products');
+// Product
+Route::get('list/products', [controllerProduct::class, 'showProduit'])
+    ->name('listProducts');
 
 Route::post('list/products', [controllerProduct::class, 'addproduit'])
-    ->name('addProducts');
+    ->name('addProduct');
 
 Route::get('delete/products/{numProd}', [controllerProduct::class, 'deleteProduit']);
 
-Route::get('modifie/products/{numProd}', [controllerProduct::class, 'loadEditProduit']);
+Route::get('edit/products/{numProd}', [controllerProduct::class, 'loadEditProduit']);
 
-Route::post('delete/produitt', [controllerProduct::class, 'editProduit'])
-    ->name('modifieProduit');
+Route::post('edit/products', [controllerProduct::class, 'editProduit'])
+    ->name('editProduct');
 
 
-Route::get('/list/services', [controllerService::class, 'showServices'])
-    ->name('list_services');
+// Service
+Route::get('list/services', [controllerService::class, 'showServices'])
+    ->name('listServices');
 
-Route::post('/add/services', [controllerService::class, 'addService'])
-    ->name('addServices');
+Route::post('add/services', [controllerService::class, 'addService'])
+    ->name('addService');
 
 Route::get('delete/services/{numServ}', [controllerService::class, 'deleteService']);
 
-Route::get('modifie/services/{numServ}', [controllerService::class, 'loadEditService']);
+Route::get('edit/services/{numServ}', [controllerService::class, 'loadEditService']);
 
-Route::post('EditService', [controllerService::class, 'editService'])
-    ->name('modifieService');
+Route::post('edit/service', [controllerService::class, 'editService'])
+    ->name('editService');
 
 
-Route::get('/list/maintenances', [controllerentretien::class, 'showEntretienList_nomService'])
+// Maintenance
+Route::get('list/maintenances', [controllerentretien::class, 'showEntretienList_nomService'])
     ->name('maintenance');
 
-Route::post('/list/maintenances', [controllerentretien::class, 'saveEntretien'])
+Route::post('list/maintenances', [controllerentretien::class, 'saveEntretien'])
     ->name('addMaintenance');
 
 Route::get('delete/maintenances/{numEntr}', [controllerentretien::class, 'deleteMaintenance']);
 
-Route::get('modifie/maintenances/{numEntree}', [controllerentretien::class, 'loadEditEntretien']);
+Route::get('edit/maintenances/{numEntree}', [controllerentretien::class, 'loadEditEntretien']);
 
-Route::post('/editMaintenance', [controllerentretien::class, 'editEntretien'])
-    ->name('modifieEntretien');
+Route::post('edit/maintenance', [controllerentretien::class, 'editEntretien'])
+    ->name('editMaintenance');
 
+Route::post('search/maintenances', [controllerentretien::class, 'search'])
+    ->name('searchMaintenances');
 
-Route::post('searchEntretien', [controllerentretien::class, 'search'])
-    ->name('serachEntretien');
-
-Route::post('searchEntretien', [controllerentretien::class, 'search'])->name('serachEntretien');
-
-Route::post('haha/haha', [controllerentretien::class, 'filterMaintenancesClientList'])
+Route::post('list/maintenance/filter', [controllerentretien::class, 'filterMaintenancesClientList'])
     ->name('filterMaintenances');
 
-Route::get('/bill/maintenances/{numEntretien}', [controllerentretien::class, 'generateBill'])
+Route::get('bill/maintenances/{numEntretien}', [controllerentretien::class, 'generateBill'])
     ->name('billMaintenances');
 
-Route::post('/list/maintenances/filter', [controllerentretien::class, 'filterMaintenancesClientList'])
-    ->name('filterMaintenances');
 
-Route::get('/list/maintenances/filter', [controllerentretien::class, 'showEntretienList_nomService']);
+// Entry
+Route::get('list/entry', [controllerentree::class, 'showentre_produit'])
+    ->name('entry');
 
+Route::post('add/entry', [controllerentree::class, 'addEntree'])
+    ->name('addEntry');
 
-Route::get('/list/Entree', [controllerentree::class, 'showentre_produit'])
-    ->name('Entree');
+Route::get('delete/entry/{numEntree}', [controllerentree::class, 'deleteEntree']);
 
-Route::post('/addEntree', [controllerentree::class, 'addEntree'])
-    ->name('AddEntree');
+Route::get('edit/entry/{numEntre}', [controllerentree::class, 'loadeditEntree']);
 
-Route::get('delete/Entree/{numEntree}', [controllerentree::class, 'deleteEntree']);
+Route::post('edit/entry', [controllerentree::class, 'editEntree'])
+    ->name('editEntry');
 
-Route::get('modifie/Entree/{numEntre}', [controllerentree::class, 'loadeditEntree']);
-
-Route::post('modifieEntree', [controllerentree::class, 'editEntree'])
-    ->name('editEntree');

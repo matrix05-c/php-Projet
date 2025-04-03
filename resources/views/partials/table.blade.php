@@ -35,7 +35,7 @@
                         <td>{{ $col }}</td>
                     @endforeach
                     <td class="col-1">
-                        <a href="{{ url('modifie/' . Request::segment(2) . '/' . $data[$PK]) }}">
+                        <a href="{{ url('edit/' . Request::segment(2) . '/' . $data[$PK]) }}">
                             <button type="submit" class="btn btn-outline-primary">Edit</button>
                         </a>
                     </td>

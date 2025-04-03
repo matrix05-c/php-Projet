@@ -21,10 +21,6 @@
                 New service
             </button>
             <dic class="col"></dic>
-            <form action="" method="GET" class="d-flex col-6 col-lg-4">
-                <input type="search" name="search" class="form-control">
-                <input type="submit" value="Search" class="btn btn-secondary">
-            </form>
         </div>
 
         @if (session('success'))
@@ -56,7 +52,7 @@
                 </div>
 
                 <div class="modal-body p-5 pt-0">
-                    <form action="{{ route('addServices') }}" method="post">
+                    <form action="{{ route('addService') }}" method="post">
                         @csrf
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control rounded-3" name="service_name" id="design-input"

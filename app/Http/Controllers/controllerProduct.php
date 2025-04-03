@@ -18,10 +18,10 @@ class controllerProduct
             $new_product->design = $request->produit_name;
             $new_product->prixProduit = $request->price_value;
             $new_product->save();
-            return redirect('/list/products')
+            return redirect(route('listProducts'))
                 ->with('success', true);
         } catch (Exception $e) {
-            return redirect('/list/products')
+            return redirect(route('listProducts'))
                 ->with('success', false);
         }
     }
@@ -38,7 +38,7 @@ class controllerProduct
     {
         try {
             Produit::find($numProd)->delete();
-            return redirect()->back()->with('success', 'delete entretien successfuly');
+            return redirect()->back()->with('success', 'Product deleted successfuly');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -57,6 +57,6 @@ class controllerProduct
             'design' => $request->produit_name,
             'prixProduit' => $request->price_value,
         ]);
-        return redirect('/list/products')->with('success', 'Produit modifie with success');
+        return redirect(route('listProducts'))->with('success', 'Produit modified successfuly');
     }
 }

@@ -14,7 +14,7 @@
         <main class="container-fluid">
             <h3 class="mt-5 text text-warning ms-5">Modifie entree</h3>
 
-            <form action="{{ route('editEntree') }}" method="post" class="container ">
+            <form action="{{ route('editEntry') }}" method="post" class="container ">
                 @csrf
                 <div class="card card-body mt-5">
                     <div class="row my-2">

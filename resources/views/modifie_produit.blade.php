@@ -14,7 +14,7 @@
             </div>
             {{-- {{ dd($produit[0]->prixProduit) }} --}}
             <div class="modal-body p-5 pt-0">
-                <form action="{{ route('modifieProduit') }}" method="post">
+                <form action="{{ route('editProduct') }}" method="post">
                     @csrf
                     <div class="mb-3 form-floating">
                         <input type="hidden" value="{{ $numProd }}" name="numero_produit">

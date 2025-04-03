@@ -21,11 +21,11 @@
     <body>
         <main class="container-fluid">
             <div class="my-3 row">
-                <h3 class="col-4 col-lg-2 text-warning">Achat :</h3>
+                <h3 class="col-4 col-lg-2 text-warning">Purchase :</h3>
                 <dic class="col"></dic>
-                <form action="{{ route('searchAchat') }}" method="post" class="d-flex btn-group col-6 col-lg-4">
+                <form action="{{ route('searchPurchases') }}" method="post" class="d-flex btn-group col-6 col-lg-4">
                     @csrf
-                    <input type="search" name="search" class="form-control" placeholder="Entrer le nom">
+                    <input type="search" name="search" class="form-control" placeholder="Name">
                     <input type="submit" value="Search" class="btn btn-secondary">
                 </form>
             </div>
@@ -41,7 +41,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('addAchat') }}" method="post" class="container" style="margin-top: 40px">
+            <form action="{{ route('addPurchase') }}" method="post" class="container" style="margin-top: 40px">
                 @csrf
                 <div class="row my-2">
                     <div class="col-4 col-lg-2">

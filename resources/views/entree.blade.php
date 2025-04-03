@@ -4,10 +4,10 @@
     $list = 'maintenances';
     $translate = [
         'numEntree' => 'N',
-        'stockEntree' => 'Quantite',
-        'numProd' => 'N produit',
+        'stockEntree' => 'Quantity',
+        'design' => 'Product',
         'created_at' => 'Date',
-    ]; 
+    ];
 
     $has_bill = false;
 @endphp
@@ -16,9 +16,9 @@
 
 @section('title', 'Purchase')
 @section('content')
-    <body  >
+    <body>
         <main class="container-fluid">
-            <h3 class="mt-5 text-warning">Entree </h3>
+            <h3 class="mt-5 text-warning">Entry </h3>
 
             @if (session('success'))
                 <div class="alert alert-success">
@@ -32,7 +32,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('AddEntree') }}" method="post" class="container">
+            <form action="{{ route('addEntry') }}" method="post" class="container">
                 @csrf
                 <div class="row my-2">
                     <div class="col-4 col-lg-2">

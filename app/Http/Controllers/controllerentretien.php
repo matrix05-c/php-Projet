@@ -34,11 +34,11 @@ class controllerentretien
             $new_entretien->nomClient = $request->name;
             $new_entretien->save();
 
-            return redirect('/list/maintenances')
-                ->with('success', 'added entretien successfully');
+            return redirect(route('maintenance'))
+                ->with('success', 'Maintenance added successfully');
         } catch (\Throwable $th) {
-            return redirect('/list/maintenances')
-                ->with('error', 'failed to add entretien');
+            return redirect(route('maintenance'))
+                ->with('error', 'Failed to add maintenance');
         }
     }
 
@@ -46,7 +46,7 @@ class controllerentretien
     {
         try {
             Entretien::find($numEntr)->delete();
-            return redirect()->back()->with('success', 'delete entretien successfuly');
+            return redirect()->back()->with('success', 'Maintenance deleted successfuly');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -78,10 +78,10 @@ class controllerentretien
                 'nomClient' => $request->name
             ]);
             
-            return redirect('list/maintenances')
+            return redirect(route('maintenance'))
                 ->with('success', 'Entretien modifi with succes');
         } catch (Exception $e) {
-            return redirect('list/maintenances')
+            return redirect(route('maintenance'))
                 ->with('error', $e->getMessage());
         }
     }

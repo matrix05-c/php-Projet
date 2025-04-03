@@ -40,16 +40,16 @@ class controllerAchat
             $new_achat->nomClient = $request->name;
             $new_achat->nbrLitre = $request->quantity;
             $new_achat->save();
-            return redirect()->back()->with('success', 'Produit ajoute avec succes');
+            return redirect()->back()->with('success', 'Product added successfuly');
         } else {
-            return redirect()->back()->with('error', 'stock insuffisant');
+            return redirect()->back()->with('error', 'Out of stock');
         }
     }
     public function deleteAchat($numAchat)
     {
         try {
             Achat::find($numAchat)->delete();
-            return redirect()->back()->with('success', 'delete purchase successfuly');
+            return redirect()->back()->with('success', 'Purchase deleted successfuly');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -96,9 +96,9 @@ class controllerAchat
                 'nbrLitre' => $request->quantit
             ]);
 
-            return redirect('list/purchase')->with('success', 'achat modifie successfuly');
+            return redirect(route('purchase'))->with('success', 'Purchase modified successfuly');
         } else {
-            return redirect('list/purchase')->with('error', 'failed to modifie: quamtity product insuffisant');
+            return redirect(route('purchase'))->with('error', 'Failed to edit purchase');
         }
     }
 

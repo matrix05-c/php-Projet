@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ asset('resource/icon/icons8-gas-station-64.png') }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>@yield('title')</title>
@@ -19,13 +20,11 @@
         <div role="alert" aria-live="assertive" aria-atomic="true"
             class="toast show bg-danger text-light top-0 end-0 position-fixed" style="z-index: 10000">
             <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
                 <strong class="me-auto">Alert</strong>
-                <small>1 mins ago</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                un des produits est inferieur a 10 Litre
+                Un des produits est inferieur a 10 Litre
             </div>
         </div>
     @endif
@@ -47,19 +46,19 @@
                     <li class="nav-item"><a @class(['nav-link', 'active' => $page == 'home']) aria-current="page"
                             href="{{ route('index') }}">Home</a></li>
                     <li class="nav-item"><a @class(['nav-link', 'active' => $page == 'purchase']) aria-current="page"
-                            href="{{ route('purchase') }}">Achat</a></li>
+                            href="{{ route('purchase') }}">Purchase</a></li>
                     <li class="nav-item"><a @class(['nav-link', 'active' => $page == 'maintenance']) aria-current="page"
-                            href="{{ route('maintenance')}}">Entretien</a></li>
+                            href="{{ route('maintenance')}}">Maintenance</a></li>
                     <li class="nav-item dropdown">
                         <a @class(['nav-link', 'dropdown-toggle', 'active' => $page == 'list']) href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Lists</a>
                         <ul class="dropdown-menu">
                             <li><a @class(['dropdown-item', 'active' => $list == 'products'])
-                                    href="{{ route('list_products') }}">Products</a></li>
+                                    href="{{ route('listProducts') }}">Products</a></li>
                             <li><a @class(['dropdown-item', 'active' => $list == 'services'])
-                                    href="{{ route('list_services') }}">Services</a></li>
+                                    href="{{ route('listServices') }}">Services</a></li>
                             <li><a @class(['dropdown-item', 'active' => $list == 'maintenances'])
-                                    href="{{ route('Entree') }}">Entree</a></li>
+                                    href="{{ route('entry') }}">Entry</a></li>
                         </ul>
 
                     </li>

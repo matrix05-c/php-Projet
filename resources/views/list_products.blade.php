@@ -4,9 +4,9 @@
     $list = 'products';
     $translate = [
         'numProd' => 'N',
-        'design' => 'Designation',
+        'design' => 'Name',
         'stock' => 'Stock',
-        'prixProduit' => 'Prix'
+        'prixProduit' => 'Cost'
     ];
     
     $has_bill = false;
@@ -16,8 +16,7 @@
 @section('title', 'Purchase')
 
 @section('content')
-    <body  >
-
+    <body>
 
         <div class="container">
             <div class="my-3 row">
@@ -25,11 +24,7 @@
                     data-bs-target="#product-modal">
                     New product
                 </button>
-                <dic class="col"></dic>
-                <form action="" method="GET" class="d-flex col-6 col-lg-4">
-                    <input type="search" name="search" class="form-control">
-                    <input type="submit" value="Search" class="btn btn-secondary">
-                </form>
+                <div class="col"></div>
             </div>
 
             @if (isset($success))
@@ -66,7 +61,7 @@
                     </div>
 
                     <div class="modal-body p-5 pt-0">
-                        <form action="{{ route('addProducts') }}" method="post">
+                        <form action="{{ route('addProduct') }}" method="post">
                             @csrf
                             <div class="mb-3 form-floating">
                                 <input type="text" class="form-control rounded-3" id="design-input" name="produit_name"

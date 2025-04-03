@@ -15,7 +15,7 @@
 
             <h3 class="mt-5 text-warning">Modifie Entretien</h3>
 
-            <form action="{{ route('modifieEntretien') }}" method="post" class="container">
+            <form action="{{ route('editMaintenance') }}" method="post" class="container">
                 @csrf
                 <div class="card card-body">
                     <div class="row my-2">

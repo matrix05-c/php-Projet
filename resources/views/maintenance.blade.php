@@ -5,8 +5,8 @@
     $translate = [
         'numEntr' => 'N',
         'service' => 'Service',
-        'numVoiture' => 'N vehicule',
-        'nomClient' => 'Nom',
+        'numVoiture' => 'N vehicle',
+        'nomClient' => 'Name',
         'created_at' => 'Date',
     ];
     $has_bill = true;
@@ -22,9 +22,9 @@
             <div class="my-3 row">
                 <h3 class="col-4 col-lg-2 text-warning">Entretien :</h3>
                 <dic class="col"></dic>
-                <form action="{{ route('serachEntretien') }}" method="post" class="d-flex col-6 col-lg-4 btn-group">
+                <form action="{{ route('searchMaintenances') }}" method="post" class="d-flex col-6 col-lg-4 btn-group">
                     @csrf
-                    <input type="search" name="search" class="form-control" placeholder="Entrer votre nom">
+                    <input type="search" name="search" class="form-control" placeholder="Name">
                     <input type="submit" value="Search" class="btn btn-secondary">
                 </form>
             </div>
