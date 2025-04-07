@@ -88,14 +88,19 @@
 
             <div class="d-flex justify-content-between mt-5 me-5">
                 <h3 class="text-warning">List :</h3>
-                <form action="{{ route("filterMaintenances") }}" method="post" class="btn-group">
-                    @csrf
-                    <input type="button" value="from" class="btn">
-                    <input type="date" name="begin" class="form-control">
-                    <input type="button" value="to" class="btn">
-                    <input type="date" name="end" class="form-control">
-                    <input type="submit" value="Filter" class="btn btn-secondary">
-                </form>
+                <div>
+                    <form action="{{ route("filterMaintenances") }}" method="post" class="btn-group">
+                        @csrf
+                        <input type="button" value="from" class="btn">
+                        <input type="date" name="begin" class="form-control">
+                        <input type="button" value="to" class="btn">
+                        <input type="date" name="end" class="form-control">
+                        <input type="submit" value="Filter" class="btn btn-secondary">
+                    </form>
+                    <div class="text-end m-3">
+                        <p>List of <span class="fw-bold">{{ count($entretien) }}</span> Maintenance(s)</p>
+                    </div>
+                </div>
             </div>
 
             <div class="container">

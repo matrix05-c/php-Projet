@@ -45,15 +45,21 @@ class controllerAchat
             return redirect()->back()->with('error', 'Out of stock');
         }
     }
+
     public function deleteAchat($numAchat)
     {
         try {
-            Achat::find($numAchat)->delete();
+            $achat = Achat::find($numAchat);
+            // $produit = Produit::find($achat->numProd);
+            // $produit->stock += $achat->nbrLitre;
+            // $produit->save();
+            $achat->delete();
             return redirect()->back()->with('success', 'Purchase deleted successfuly');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
     public function loadEditAchat($numAchat)
     {
         $num_produit_modifie = Achat::where('numAchat', $numAchat)
@@ -71,7 +77,6 @@ class controllerAchat
         $achat = Achat::find($numAchat);
         return view('modifie_achat', compact('achat', 'produit', 'productINferieurDix'));
     }
-
 
     public function editAchat(Request $request)
     {

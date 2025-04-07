@@ -37,8 +37,16 @@ class controllerentree
     public function deleteEntree($numEntree)
     {
         try {
-            Entree::find($numEntree)->delete();
-            return redirect()->back()->with('success', 'Entry deleted successfuly');
+            $entree = Entree::find($numEntree);
+            //$produit = Produit::find($entree->numProd);
+            //if ($produit->stock >= $entree->stockEntree) {
+            //    $produit->stock -= $entree->stockEntree;
+            //    $produit->save();
+                $entree->delete();
+                return redirect()->back()->with('success', 'Entry deleted successfuly');
+            //} else {
+            //    return redirect()->back()->with('error', 'Modification not permited');
+            // }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

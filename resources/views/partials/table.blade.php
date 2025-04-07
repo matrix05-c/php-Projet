@@ -15,7 +15,7 @@
         <tr>
             @if (count($data_list))
                 @foreach (current($data_list) as $key => $data)
-                    @if (isset($translate))
+                    @if (isset($translate) && isset($translate[$key]))
                         <th>{{ $translate[$key] }}</th>
                     @else
                         <th>{{ $key }}</th>

@@ -9,7 +9,6 @@
         'nbrLitre' => 'Quantity',
         'created_at' => 'Date',
     ];
-
     $has_bill = false;
 @endphp
 
@@ -95,11 +94,6 @@
 
             <div class="container">
                 @if (isset($achat))
-                
-                    @foreach ($achat as $achate)
-
-
-                    @endforeach
                     @include('partials.table', ['models' => $achat])
                 @else
                     @include('partials.table')

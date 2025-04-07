@@ -11,18 +11,18 @@ class controllerService
 {
     public function addService(Request $request)
     {
-        if ($request->service_price > 0){
-            $new_service = new Service();
-            $new_service->service = $request->service_name;
-            $new_service->prix = $request->service_price;
-            $new_service->save();
+        $request->validate([
+            "service_name" => "required|string",
+            "service_price" => "required|integer|min:1",
+        ]);
 
-            return redirect(route('listServices'))
-                ->with('success', 'add services successfully');
-        } else {
-            return redirect(route('service'))
-                ->with('fail', 'error: ');
-        }
+        $new_service = new Service();
+        $new_service->service = $request->service_name;
+        $new_service->prix = $request->service_price;
+        $new_service->save();
+
+        return redirect(route('listServices'))
+            ->with('success', 'add services successfully');
     }
 
     public function showServices()
